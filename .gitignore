@@ -1,0 +1,5 @@
+.ipynb_checkpoints
+.pytest_cache
+checkpoints
+landmark_images
+__pycache__
