@@ -31,6 +31,18 @@ class MyModel(nn.Module):
             nn.ReLU(),
             nn.MaxPool2d(2,2),
             nn.BatchNorm2d(64),
+            nn.Dropout(p=dropout)
+            
+            nn.Conv2d(64, 256, 3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2,2),
+            nn.BatchNorm2d(32),
+            nn.Dropout(p=dropout),
+            
+            nn.Conv2d(256, 64, 3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2,2),
+            nn.BatchNorm2d(64),
             nn.Dropout(p=dropout) 
         )
         
