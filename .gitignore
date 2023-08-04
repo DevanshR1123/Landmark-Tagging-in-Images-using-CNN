@@ -1,5 +1,7 @@
 .ipynb_checkpoints
 .pytest_cache
-checkpoints
 landmark_images
 __pycache__
+*.html
+*.tar.gz
+*.pt
