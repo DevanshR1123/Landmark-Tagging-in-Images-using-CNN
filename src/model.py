@@ -1,3 +1,4 @@
+import pytest
 import torch
 import torch.nn as nn
 
@@ -26,13 +27,13 @@ class MyModel(nn.Module):
             nn.BatchNorm2d(128),
             nn.Dropout(p=dropout),
             #
-            nn.Conv2d(128, 256, 3, padding=1),
+            nn.Conv2d(128, 128, 3, padding=1),
             nn.ReLU(),
             nn.MaxPool2d(2, 2),
-            nn.BatchNorm2d(256),
+            nn.BatchNorm2d(128),
             nn.Dropout(p=dropout),
             #
-            nn.Conv2d(256, 64, 3, padding=1),
+            nn.Conv2d(128, 64, 3, padding=1),
             nn.ReLU(),
             nn.MaxPool2d(2, 2),
             nn.BatchNorm2d(64),
@@ -57,7 +58,6 @@ class MyModel(nn.Module):
 ######################################################################################
 #                                     TESTS
 ######################################################################################
-import pytest
 
 
 @pytest.fixture(scope="session")
