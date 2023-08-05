@@ -110,8 +110,8 @@ def optimize(
     # plateau
     # HINT: look here:
     # https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-    # scheduler  = torch.optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.5)
-    scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.75)
+    # scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
 
     for epoch in range(1, n_epochs + 1):
         train_loss = train_one_epoch(data_loaders["train"], model, optimizer, loss)
