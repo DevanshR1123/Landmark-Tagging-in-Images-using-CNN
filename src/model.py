@@ -9,13 +9,13 @@ class MyModel(nn.Module):
         super().__init__()
 
         self.backbone = nn.Sequential(
-            nn.Conv2d(3, 32, 3, padding=1),
+            nn.Conv2d(3, 64, 3, padding=1),
             nn.ReLU(),
             nn.MaxPool2d(2, 2),
-            nn.BatchNorm2d(32),
+            nn.BatchNorm2d(64),
             nn.Dropout(p=dropout),
             #
-            nn.Conv2d(32, 64, 3, padding=1),
+            nn.Conv2d(64, 64, 3, padding=1),
             nn.ReLU(),
             nn.MaxPool2d(2, 2),
             nn.BatchNorm2d(64),
@@ -33,22 +33,22 @@ class MyModel(nn.Module):
             nn.BatchNorm2d(128),
             nn.Dropout(p=dropout),
             #
-            nn.Conv2d(128, 64, 3, padding=1),
+            nn.Conv2d(128, 256, 3, padding=1),
             nn.ReLU(),
             nn.MaxPool2d(2, 2),
-            nn.BatchNorm2d(64),
+            nn.BatchNorm2d(256),
             nn.Dropout(p=dropout),
         )
 
         self.head = nn.Sequential(
             nn.Flatten(),
             #
-            nn.Linear(7 * 7 * 64, 512),
+            nn.Linear(7 * 7 * 256, 1024),
             nn.ReLU(),
-            nn.BatchNorm1d(512),
+            nn.BatchNorm1d(1024),
             nn.Dropout(p=dropout),
             #
-            nn.Linear(512, num_classes),
+            nn.Linear(1024, num_classes),
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
